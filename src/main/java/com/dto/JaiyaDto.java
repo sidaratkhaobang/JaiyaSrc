@@ -1,18 +1,18 @@
 package com.dto;
 
 public class JaiyaDto {
-	String id;
+	String username;
 	String email;
 	String password;
 	String confirmpassword;
 	int tel;
 	
 	
-	public String getId() {
-		return id;
+	public String getusername() {
+		return username;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setusername(String username) {
+		this.username = username;
 	}
 	public String getEmail() {
 		return email;
