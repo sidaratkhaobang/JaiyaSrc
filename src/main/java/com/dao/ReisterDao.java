@@ -8,6 +8,7 @@ public class ReisterDao {
 	String tel;
 	
 	
+	
 	public String getUsername() {
 		return username;
 	}
