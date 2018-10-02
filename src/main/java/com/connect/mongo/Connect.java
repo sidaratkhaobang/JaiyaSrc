@@ -10,7 +10,7 @@ public class Connect {
 
 	public Connect() {
 		this.mongo = new MongoClient("localhost", 27017);
-		this.db = this.mongo.getDatabase("Jaiya");
+		this.db = this.mongo.getDatabase("jaiya");
 	}
 	
 	public void close() {
