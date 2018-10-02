@@ -1,8 +1,8 @@
-package com.dto;
+package com.dao;
 
 import java.sql.Date;
 
-public class RegisterDto {
+public class JaiyaDao {
 	String firstName;
 	String lastName;
 	Date dob;
@@ -11,7 +11,6 @@ public class RegisterDto {
 	String bloodgroup;
 	int status;
 	int iduser;
-	
 	
 
 	public String getFirstName() {
@@ -69,4 +68,5 @@ public class RegisterDto {
 	public void setIduser(int iduser) {
 		this.iduser = iduser;
 	}
+
 }

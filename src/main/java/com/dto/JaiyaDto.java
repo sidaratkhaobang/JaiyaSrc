@@ -2,7 +2,7 @@ package com.dto;
 
 import java.sql.Date;
 
-public class RegisterDto {
+public class JaiyaDto {
 	String firstName;
 	String lastName;
 	Date dob;
@@ -69,4 +69,5 @@ public class RegisterDto {
 	public void setIduser(int iduser) {
 		this.iduser = iduser;
 	}
+
 }
