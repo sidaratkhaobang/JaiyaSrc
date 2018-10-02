@@ -3,6 +3,7 @@ package com.dao;
 import java.sql.Date;
 
 public class ReisterDao {
+	int id;
 	String firstName;
 	String lastName;
 	Date dob;
@@ -12,6 +13,12 @@ public class ReisterDao {
 	int status;
 	int iduser;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public String getFirstName() {
 		return firstName;

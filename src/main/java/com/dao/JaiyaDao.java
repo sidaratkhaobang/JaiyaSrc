@@ -3,6 +3,7 @@ package com.dao;
 import java.sql.Date;
 
 public class JaiyaDao {
+	int id;
 	String firstName;
 	String lastName;
 	Date dob;
@@ -12,7 +13,13 @@ public class JaiyaDao {
 	int status;
 	int iduser;
 	
-
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}

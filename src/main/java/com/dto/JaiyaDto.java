@@ -3,6 +3,7 @@ package com.dto;
 import java.sql.Date;
 
 public class JaiyaDto {
+	int id;
 	String firstName;
 	String lastName;
 	Date dob;
@@ -13,7 +14,13 @@ public class JaiyaDto {
 	int iduser;
 	
 	
-
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
