@@ -3,10 +3,12 @@ package com.dao;
 
 
 public class JaiyaDao {
+	
 	String username;
 	String email;
 	String password;
 	String confirmpassword;
+	int  idmachine;
 	int tel;
 	
 	
@@ -40,6 +42,14 @@ public class JaiyaDao {
 	public void setTel(int tel) {
 		this.tel = tel;
 	}
+	public int getIdmachine() {
+		return idmachine;
+	}
+	public void setIdmachine(int idmachine) {
+		this.idmachine = idmachine;
+	}
+	
+	
 	
 
 }

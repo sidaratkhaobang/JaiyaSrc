@@ -3,11 +3,14 @@ package com.dto;
 
 
 public class JaiyaDto {
+	
 	String username;
 	String email;
 	String password;
 	String confirmpassword;
+	int  idmachine;
 	int tel;
+	
 	
 	public String getUsername() {
 		return username;
@@ -39,6 +42,13 @@ public class JaiyaDto {
 	public void setTel(int tel) {
 		this.tel = tel;
 	}
+	public int getIdmachine() {
+		return idmachine;
+	}
+	public void setIdmachine(int idmachine) {
+		this.idmachine = idmachine;
+	}
+	
 	
 	
 	
