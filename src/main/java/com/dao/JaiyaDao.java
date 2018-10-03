@@ -9,7 +9,7 @@ public class JaiyaDao {
 	String password;
 	String confirmpassword;
 	int  idmachine;
-	int tel;
+	String tel;
 	
 	
 	public String getUsername() {
@@ -36,10 +36,11 @@ public class JaiyaDao {
 	public void setConfirmpassword(String confirmpassword) {
 		this.confirmpassword = confirmpassword;
 	}
-	public int getTel() {
+	
+	public String getTel() {
 		return tel;
 	}
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 	public int getIdmachine() {
