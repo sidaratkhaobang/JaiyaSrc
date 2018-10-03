@@ -1,79 +1,45 @@
 package com.dao;
 
-import java.sql.Date;
+
 
 public class JaiyaDao {
-	int id;
-	String firstName;
-	String lastName;
-	Date dob;
-	int gender;
-	String allergy;
-	String bloodgroup;
-	int status;
-	int iduser;
+	String username;
+	String email;
+	String password;
+	String confirmpassword;
+	int tel;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	
-	public String getFirstName() {
-		return firstName;
+	public String getUsername() {
+		return username;
 	}
-	public void setUsername(String firstName) {
-		this.firstName = firstName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	
-	public String getLastName() {
-		return lastName;
+	public String getEmail() {
+		return email;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
-	public Date getDOB() {
-		return dob;
+	public String getPassword() {
+		return password;
 	}
-	public void setDOB(Date dob) {
-		this.dob = dob;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	
-	public int getGender() {
-		return gender;
+	public String getConfirmpassword() {
+		return confirmpassword;
 	}
-	public void setGender(int gender) {
-		this.gender = gender;
+	public void setConfirmpassword(String confirmpassword) {
+		this.confirmpassword = confirmpassword;
+	}
+	public int getTel() {
+		return tel;
+	}
+	public void setTel(int tel) {
+		this.tel = tel;
 	}
 	
-	public String getAllergy() {
-		return allergy;
-	}
-	public void setAllergy(String allergy) {
-		this.allergy = allergy;
-	}
-	
-	public String getBloodgroup() {
-		return bloodgroup;
-	}
-	public void setBloodgroup(String bloodgroup) {
-		this.bloodgroup = bloodgroup;
-	}
-	
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
-	
-	public int getIduser() {
-		return iduser;
-	}
-	public void setIduser(int iduser) {
-		this.iduser = iduser;
-	}
 
 }

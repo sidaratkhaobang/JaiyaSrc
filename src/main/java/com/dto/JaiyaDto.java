@@ -1,80 +1,47 @@
 package com.dto;
 
-import java.sql.Date;
+
 
 public class JaiyaDto {
-	int id;
-	String firstName;
-	String lastName;
-	Date dob;
-	int gender;
-	String allergy;
-	String bloodgroup;
-	int status;
-	int iduser;
+	String username;
+	String email;
+	String password;
+	String confirmpassword;
+	int tel;
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getConfirmpassword() {
+		return confirmpassword;
+	}
+	public void setConfirmpassword(String confirmpassword) {
+		this.confirmpassword = confirmpassword;
+	}
+	public int getTel() {
+		return tel;
+	}
+	public void setTel(int tel) {
+		this.tel = tel;
+	}
 	
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	
-	public String getFirstName() {
-		return firstName;
-	}
-	public void setUsername(String firstName) {
-		this.firstName = firstName;
-	}
 	
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
 	
-	public Date getDOB() {
-		return dob;
-	}
-	public void setDOB(Date dob) {
-		this.dob = dob;
-	}
-	
-	public int getGender() {
-		return gender;
-	}
-	public void setGender(int gender) {
-		this.gender = gender;
-	}
-	
-	public String getAllergy() {
-		return allergy;
-	}
-	public void setAllergy(String allergy) {
-		this.allergy = allergy;
-	}
-	
-	public String getBloodgroup() {
-		return bloodgroup;
-	}
-	public void setBloodgroup(String bloodgroup) {
-		this.bloodgroup = bloodgroup;
-	}
-	
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
-	
-	public int getIduser() {
-		return iduser;
-	}
-	public void setIduser(int iduser) {
-		this.iduser = iduser;
-	}
-
 }
