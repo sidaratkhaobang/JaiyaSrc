@@ -3,6 +3,7 @@ package com.dao;
 
 
 public class JaiyaDao {
+	
 	String username;
 	String email;
 	String password;

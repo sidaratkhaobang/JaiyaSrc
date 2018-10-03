@@ -3,6 +3,7 @@ package com.dto;
 
 
 public class JaiyaDto {
+	
 	String username;
 	String email;
 	String password;
