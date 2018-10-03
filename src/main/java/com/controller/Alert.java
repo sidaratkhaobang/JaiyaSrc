@@ -15,7 +15,7 @@ import com.dao.AlertDao;
 import com.dao.ReisterDao;
 import com.dto.AlertDto;
 import com.dto.RegisterDto;
-import com.dto.SolutionDto;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.mongodb.client.MongoCollection;

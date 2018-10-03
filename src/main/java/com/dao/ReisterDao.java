@@ -10,6 +10,15 @@ public class ReisterDao {
 	int gender;
 	String allergy;
 	String bloodgroup;
+	String disease;
+	
+	
+	public String getDisease() {
+		return disease;
+	}
+	public void setDisease(String disease) {
+		this.disease = disease;
+	}
 	int status;
 	int iduser;
 	
@@ -23,7 +32,7 @@ public class ReisterDao {
 	public String getFirstName() {
 		return firstName;
 	}
-	public void setUsername(String firstName) {
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 	
