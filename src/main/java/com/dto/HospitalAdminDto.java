@@ -1,6 +1,7 @@
 package com.dto;
 
 public class HospitalAdminDto {
+
 	int id;
 	String nameofhospital;
 	double latijude;
@@ -8,6 +9,8 @@ public class HospitalAdminDto {
 	String tell;
 	int provinceId;
 	int districtId;
+	int subdistrictId;
+	
 	public int getId() {
 		return id;
 	}
@@ -49,5 +52,11 @@ public class HospitalAdminDto {
 	}
 	public void setDistrictId(int districtId) {
 		this.districtId = districtId;
+	}
+	public int getSubdistrictId() {
+		return subdistrictId;
+	}
+	public void setSubdistrictId(int subdistrictId) {
+		this.subdistrictId = subdistrictId;
 	}
 }

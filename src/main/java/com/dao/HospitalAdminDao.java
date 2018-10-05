@@ -9,6 +9,8 @@ public class HospitalAdminDao {
 	int provinceId;
 	int districtId;
 	int subdistrictId;
+	
+	
 	public int getId() {
 		return id;
 	}
