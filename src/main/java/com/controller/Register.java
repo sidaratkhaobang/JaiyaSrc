@@ -23,6 +23,7 @@ import com.mongodb.client.MongoCollection;
 @Path("/register")
 public class Register {
 	
+	
 	@POST
 	@Path("/insert")
 	@Consumes(MediaType.APPLICATION_JSON)
