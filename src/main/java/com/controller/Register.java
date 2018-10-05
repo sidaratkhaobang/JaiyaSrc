@@ -70,6 +70,7 @@ public class Register {
 		MongoCollection<Document> collection = mongo.db.getCollection("userData");
 		
 		ReisterDao ReisterDao = new ReisterDao();
+		ReisterDao.setId(RegisterDto.getId());
 		ReisterDao.setFirstName(RegisterDto.getFirstName());
 		ReisterDao.setLastName(RegisterDto.getLastName());
 		ReisterDao.setDOB(RegisterDto.getDob());
