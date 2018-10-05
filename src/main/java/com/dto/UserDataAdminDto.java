@@ -13,7 +13,6 @@ public class UserDataAdminDto {
 	String bloodgroup;
 	String disease;
 	
-	
 	public int getId() {
 		return id;
 	}

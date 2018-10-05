@@ -22,6 +22,8 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 
+
+@Path("/userdataadmin")
 public class UserDataAdmin {
 	
 	
@@ -39,8 +41,7 @@ public class UserDataAdmin {
 		BasicDBObject query = new BasicDBObject();
 			
 		List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
-//		obj.add(new BasicDBObject("water", UserDataAdminDto.getWater()));
-//		obj.add(new BasicDBObject("seed", UserDataAdminDto.getSeed()));
+
 		obj.add(new BasicDBObject("firstName",UserDataAdminDto.getFirstName()));
 		obj.add(new BasicDBObject("lastName",UserDataAdminDto.getLastName()));
 		obj.add(new BasicDBObject("dob",UserDataAdminDto.getDob()));
