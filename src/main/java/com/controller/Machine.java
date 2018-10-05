@@ -1,5 +1,8 @@
 package com.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
@@ -13,14 +16,58 @@ import org.modelmapper.ModelMapper;
 import com.connect.mongo.Connect;
 import com.dao.MachineDao;
 import com.dto.MachineDto;
+import com.google.common.collect.Iterables;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.mongodb.BasicDBObject;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 
 @Path("/machine")
 public class Machine {
+	
+	@POST
+	@Path("/search")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response search(MachineDto MachineDto) {
+//		importmongo
+		Connect mongo = new Connect();
+		MongoCollection<Document> collection = mongo.db.getCollection("machine");
+		
+//		import json , modelmapper
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		ModelMapper Mapper = new ModelMapper();
+		
+		// find when water = 'value' and seed = 'value'
+		BasicDBObject query = new BasicDBObject();
+			
+		List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
+		obj.add(new BasicDBObject("Status", MachineDto.getStatus()));
+		query.put("$and", obj);
+				
+		MachineDto[] value = null;
+		
+		try {
+			FindIterable<Document> data = collection.find(query);
+			int size = Iterables.size(data);
+			value = new MachineDto[size];
+			int key = 0;
+			for (Document document : data) {
+				value[key++] = Mapper.map(document, MachineDto.class);
+			}
+			message.addProperty("message", true);
+		}catch (Exception e) {
+			message.addProperty("message", false);
+		}finally {
+			message.add("data", gson.toJsonTree(value));
+		}
+		
+		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
+	}
+	
+	
 	@POST
 	@Path("/insert")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -77,6 +124,7 @@ public class Machine {
 		MachineDao.setProvinceId(MachineDto.getProvinceId());
 		MachineDao.setDistrictId(MachineDto.getDistrictId());
 		MachineDao.setSubdistrictId(MachineDto.getSubdistrictId());
+		MachineDao.setStatus(MachineDto.getStatus());
 		
 		String json = gson.toJson(MachineDao);
 		Document document = Document.parse(json);
@@ -113,7 +161,7 @@ public class Machine {
 
 		
 		try {
-			collection.deleteOne(Filters.eq("_id", MachineDto.getId()())); 
+			collection.deleteOne(Filters.eq("_id", MachineDto.getId())); 
 			message.addProperty("message", true);
 		}catch (Exception e) {
 			message.addProperty("message", false);

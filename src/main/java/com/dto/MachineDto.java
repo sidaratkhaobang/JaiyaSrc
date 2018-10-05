@@ -9,6 +9,7 @@ public class MachineDto {
 	int provinceId;
 	int districtId;
 	int subdistrictId;
+	int status;
 	
 	public int getId() {
 		return id;
@@ -57,6 +58,12 @@ public class MachineDto {
 	}
 	public void setSubdistrictId(int subdistrictId) {
 		this.subdistrictId = subdistrictId;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 }
