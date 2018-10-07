@@ -30,37 +30,20 @@ import com.mongodb.client.model.Filters;
 @Path("/userdataadmin")
 public class UserDataAdmin {
 	
-	
 	@POST
-	@Path("/search")
+	@Path("/findAll")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response search(UserDataAdminDto UserDataAdminDto) {
+	public Response findAll() {
 		Connect mongo = new Connect();
 		JsonObject message = new JsonObject();
 		Gson gson = new Gson();
 		MongoCollection<Document> collection = mongo.db.getCollection("userData");
 		ModelMapper Mapper = new ModelMapper();
 		
-		// find when water = 'value' and seed = 'value'
-		BasicDBObject query = new BasicDBObject();
-			
-		List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
-
-		obj.add(new BasicDBObject("firstName",UserDataAdminDto.getFirstName()));
-		obj.add(new BasicDBObject("lastName",UserDataAdminDto.getLastName()));
-		obj.add(new BasicDBObject("dob",UserDataAdminDto.getDob()));
-		obj.add(new BasicDBObject("gender",UserDataAdminDto.getGender()));
-		obj.add(new BasicDBObject("allergy",UserDataAdminDto.getAllergy()));
-		obj.add(new BasicDBObject("bloodgroup",UserDataAdminDto.getBloodgroup()));
-		obj.add(new BasicDBObject("disease",UserDataAdminDto.getDisease()));
-		
-		
-		query.put("$and", obj);
-				
 		UserDataAdminDto[] value = null;
-		
+//		 ห้ามใช้     Dao
 		try {
-			FindIterable<Document> data = collection.find(query);
+			FindIterable<Document> data = collection.find();
 			int size = Iterables.size(data);
 			value = new UserDataAdminDto[size];
 			int key = 0;

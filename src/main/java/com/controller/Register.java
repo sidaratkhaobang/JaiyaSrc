@@ -17,6 +17,7 @@ import com.dto.RegisterDto;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.mongodb.BasicDBObject;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 
 
@@ -98,5 +99,36 @@ public class Register {
 		
 		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
 	}
+	
+	@POST
+	@Path("/findOne")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response findOne(RegisterDto RegisterDto) {
+		Connect mongo = new Connect();
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		MongoCollection<Document> collection = mongo.db.getCollection("userData");
+		ModelMapper Mapper = new ModelMapper();
+		
+		
+//	{}  สร้าง object in robo db หาค่าที่ input เข้าไป	
+		BasicDBObject searchQuery = new BasicDBObject();
+		searchQuery.put("_id", RegisterDto.getId());
+		
+		RegisterDto value = new RegisterDto();
+		
+		try {
+			FindIterable<Document> data = collection.find(searchQuery);
+			value = Mapper.map(data.first(), RegisterDto.class);
+			message.addProperty("message", true);
+		}catch (Exception e) {
+			message.addProperty("message", false);
+		}finally {
+			message.add("data", gson.toJsonTree(value));
+		}
+		
+		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
+	}
+	
 
 }
