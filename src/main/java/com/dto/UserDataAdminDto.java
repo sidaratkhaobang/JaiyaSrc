@@ -2,21 +2,23 @@ package com.dto;
 
 import java.sql.Date;
 
+import org.bson.types.ObjectId;
+
 public class UserDataAdminDto {
 	
-	int id;
+	String id;
 	String firstName;
 	String lastName;
 	Date dob;
-	int gender;
+	String gender;
 	String allergy;
 	String bloodgroup;
 	String disease;
 	
-	public int getId() {
-		return id;
+	public ObjectId getId() {
+		return new ObjectId(id);
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getFirstName() {
@@ -37,12 +39,13 @@ public class UserDataAdminDto {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
-	public int getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(int gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
 	public String getAllergy() {
 		return allergy;
 	}

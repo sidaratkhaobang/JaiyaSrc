@@ -72,7 +72,7 @@ public class UserDataAdmin {
 		
 		UserDataAdminDao UserDataAdminDao = new UserDataAdminDao();
 
-		UserDataAdminDao.setId(UserDataAdminDto.getId());
+	
 		UserDataAdminDao.setFirstName(UserDataAdminDto.getFirstName());
 		UserDataAdminDao.setLastName(UserDataAdminDto.getLastName());
 		UserDataAdminDao.setDob(UserDataAdminDto.getDob());
