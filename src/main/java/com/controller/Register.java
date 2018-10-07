@@ -1,5 +1,6 @@
 package com.controller;
 
+import javax.print.DocFlavor.READER;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -71,11 +72,12 @@ public class Register {
 		MongoCollection<Document> collection = mongo.db.getCollection("userData");
 		
 		ReisterDao ReisterDao = new ReisterDao();
-		ReisterDao.setId(RegisterDto.getId());
+//
+		ReisterDao.setId(ReisterDao.getId());
 		ReisterDao.setFirstName(RegisterDto.getFirstName());
 		ReisterDao.setLastName(RegisterDto.getLastName());
 		ReisterDao.setDOB(RegisterDto.getDob());
-		ReisterDao.setGender(RegisterDto.getGender());
+		RegisterDto.setGender(RegisterDto.getGender());
 		ReisterDao.setAllergy(RegisterDto.getAllergy());
 		ReisterDao.setBloodgroup(RegisterDto.getBloodgroup());
 		ReisterDao.setDisease(RegisterDto.getDisease());
@@ -113,7 +115,7 @@ public class Register {
 		
 //	{}  สร้าง object in robo db หาค่าที่ input เข้าไป	
 		BasicDBObject searchQuery = new BasicDBObject();
-		searchQuery.put("_id", RegisterDto.getId());
+		searchQuery.put("id", RegisterDto.getId());
 		
 		RegisterDto value = new RegisterDto();
 		

@@ -2,23 +2,28 @@ package com.dto;
 
 import java.sql.Date;
 
+import org.bson.types.ObjectId;
+
+
+
 public class RegisterDto {
-	int id;
+	String id;
 	String firstName;
 	String lastName;
 	Date dob;
-	int gender;
+	String gender;
 	String allergy;
 	String bloodgroup;
 	String disease;
 	int status;
-	int iduser;
+	String iduser;
 	
 	
-	public int getId() {
-		return id;
+	public ObjectId getId() {
+		return new ObjectId(id);
 	}
-	public void setId(int id) {
+	
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getFirstName() {
@@ -39,10 +44,10 @@ public class RegisterDto {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
-	public int getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(int gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 	public String getAllergy() {
@@ -69,10 +74,10 @@ public class RegisterDto {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public int getIduser() {
+	public String getIduser() {
 		return iduser;
 	}
-	public void setIduser(int iduser) {
+	public void setIduser(String iduser) {
 		this.iduser = iduser;
 	}
 	
