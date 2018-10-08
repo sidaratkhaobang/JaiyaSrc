@@ -73,7 +73,8 @@ public class Register {
 		
 		ReisterDao ReisterDao = new ReisterDao();
 //
-		ReisterDao.setId(ReisterDao.getId());
+		
+//		ReisterDao.setId(RegisterDto.getId());
 		ReisterDao.setFirstName(RegisterDto.getFirstName());
 		ReisterDao.setLastName(RegisterDto.getLastName());
 		ReisterDao.setDOB(RegisterDto.getDob());
@@ -112,10 +113,9 @@ public class Register {
 		MongoCollection<Document> collection = mongo.db.getCollection("userData");
 		ModelMapper Mapper = new ModelMapper();
 		
-		
 //	{}  สร้าง object in robo db หาค่าที่ input เข้าไป	
 		BasicDBObject searchQuery = new BasicDBObject();
-		searchQuery.put("id", RegisterDto.getId());
+		searchQuery.put("_id", RegisterDto.getId());
 		
 		RegisterDto value = new RegisterDto();
 		
