@@ -124,6 +124,8 @@ public class HospitalAdmin {
 		
 		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
 	}
+	
+	
 
 	
 }
