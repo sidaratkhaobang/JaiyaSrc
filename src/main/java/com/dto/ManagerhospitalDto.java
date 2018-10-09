@@ -2,7 +2,6 @@ package com.dto;
 
 
 public class ManagerhospitalDto {
-	
 	String _id;
 	String nameofhospital;
 	String latijude;

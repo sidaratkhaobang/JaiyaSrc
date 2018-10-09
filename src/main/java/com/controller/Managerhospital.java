@@ -20,6 +20,7 @@ import com.mongodb.client.MongoCollection;
 @Path("/Managerhospital")
 public class Managerhospital {
 	
+	
 	@POST
 	@Path("/update")
 	@Consumes(MediaType.APPLICATION_JSON)

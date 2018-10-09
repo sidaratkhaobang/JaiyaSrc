@@ -10,6 +10,7 @@ public class ManagerhospitalDao {
 	String district;
 	String subdistrict;
 	
+	
 	public String get_id() {
 		return _id;
 	}
