@@ -73,7 +73,7 @@ public class HospitalAdmin {
 		Gson gson = new Gson();
 		
 		HospitalAdminDao hospitalAdminDao = new HospitalAdminDao();
-		hospitalAdminDao.setId(hospitalAdminDto.getId());
+		
 		hospitalAdminDao.setLatijude(hospitalAdminDto.getLatijude());
 		hospitalAdminDao.setLongjijude(hospitalAdminDto.getLongjijude());
 		hospitalAdminDao.setNameofhospital(hospitalAdminDto.getNameofhospital());
@@ -124,6 +124,8 @@ public class HospitalAdmin {
 		
 		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
 	}
+	
+	
 
 	
 }

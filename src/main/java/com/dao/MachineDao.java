@@ -1,7 +1,9 @@
 package com.dao;
 
+import org.bson.types.ObjectId;
+
 public class MachineDao {
-	int id;
+	String _id;
 	int userid;
 	String nameofmachine;
 	double latijude;
@@ -11,11 +13,11 @@ public class MachineDao {
 	int subdistrictId;
 	int status;
 	
-	public int getId() {
-		return id;
+	public ObjectId getId() {
+		return new ObjectId(_id);
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String _id) {
+		this._id = _id;
 	}
 	public int getUserid() {
 		return userid;

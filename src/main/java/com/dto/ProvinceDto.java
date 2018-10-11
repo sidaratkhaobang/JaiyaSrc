@@ -3,17 +3,17 @@ package com.dto;
 import org.bson.types.ObjectId;
 
 public class ProvinceDto {
-	String id;
+	String _id;
 	int provinceId;
 	String provinceName;
 	double latitude;
 	double longtitude;
 	public ObjectId getId() {
-		return new ObjectId(id);
+		return new ObjectId(_id);
 	}
 	
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String _id) {
+		this._id = _id;
 	}
 	public int getProvinceId() {
 		return provinceId;

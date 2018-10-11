@@ -7,7 +7,7 @@ import org.bson.types.ObjectId;
 
 
 public class RegisterDto {
-	String id;
+	String _id;
 	String firstName;
 	String lastName;
 	Date dob;
@@ -20,11 +20,11 @@ public class RegisterDto {
 	
 	
 	public ObjectId getId() {
-		return new ObjectId(id);
+		return new ObjectId(_id);
 	}
 	
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String _id) {
+		this._id = _id;
 	}
 	public String getFirstName() {
 		return firstName;

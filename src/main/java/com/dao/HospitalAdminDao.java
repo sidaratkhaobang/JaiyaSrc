@@ -1,7 +1,9 @@
 package com.dao;
 
+import org.bson.types.ObjectId;
+
 public class HospitalAdminDao {
-	int id;
+	String _id;
 	String nameofhospital;
 	double latijude;
 	double longjijude;
@@ -11,11 +13,11 @@ public class HospitalAdminDao {
 	int subdistrictId;
 	
 	
-	public int getId() {
-		return id;
+	public ObjectId getId() {
+		return new ObjectId(_id);
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String _id) {
+		this._id = _id;
 	}
 	public String getNameofhospital() {
 		return nameofhospital;
