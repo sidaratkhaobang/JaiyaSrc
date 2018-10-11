@@ -30,9 +30,7 @@ public class Login {
 		JsonObject message = new JsonObject();
 		Gson gson = new Gson();
 		MongoCollection<Document> collection = mongo.db.getCollection("user");
-		ModelMapper Mapper = new ModelMapper();
-		
-		
+		ModelMapper Mapper = new ModelMapper();		
 		
 //	{}  สร้าง object in robo db หาค่าที่ input เข้าไป	
 		BasicDBObject searchQuery = new BasicDBObject();
