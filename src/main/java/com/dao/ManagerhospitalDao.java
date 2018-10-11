@@ -1,5 +1,7 @@
 package com.dao;
 
+import org.bson.types.ObjectId;
+
 public class ManagerhospitalDao {
 	String _id;
 	String nameofhospital;
@@ -11,8 +13,8 @@ public class ManagerhospitalDao {
 	String subdistrict;
 	
 	
-	public String get_id() {
-		return _id;
+	public ObjectId get_id() {
+		return new ObjectId(_id);
 	}
 	public void set_id(String _id) {
 		this._id = _id;

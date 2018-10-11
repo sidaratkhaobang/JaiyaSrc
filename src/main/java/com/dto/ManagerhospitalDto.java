@@ -1,5 +1,6 @@
 package com.dto;
 
+import org.bson.types.ObjectId;
 
 public class ManagerhospitalDto {
 	String _id;
@@ -12,8 +13,8 @@ public class ManagerhospitalDto {
 	String subdistrict;
 	
 	
-	public String get_id() {
-		return _id;
+	public ObjectId get_id() {
+		return new ObjectId(_id);
 	}
 	public void set_id(String _id) {
 		this._id = _id;

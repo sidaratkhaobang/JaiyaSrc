@@ -116,7 +116,7 @@ public class Machine {
 		Gson gson = new Gson();
 		
 		MachineDao MachineDao = new MachineDao();
-		MachineDao.setId(MachineDto.getId());
+		
 		MachineDao.setUserid(MachineDto.getUserid());
 		MachineDao.setNameofmachine(MachineDto.getNameofmachine());
 		MachineDao.setLatijude(MachineDto.getLatijude());

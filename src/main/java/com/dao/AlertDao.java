@@ -2,17 +2,19 @@ package com.dao;
 
 import java.sql.Date;
 
+import org.bson.types.ObjectId;
+
 public class AlertDao {
-	int id;
+	String _id;
 	Date datetime;
 	int machine;
 	
 	
-	public int getId() {
-		return id;
+	public ObjectId getId() {
+		return new ObjectId(_id);
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(String _id) {
+		this._id = _id;
 	}
 	
 	public Date getDatetime() {
