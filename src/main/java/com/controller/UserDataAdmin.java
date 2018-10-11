@@ -16,7 +16,7 @@ import org.modelmapper.ModelMapper;
 import com.connect.mongo.Connect;
 
 import com.dao.UserDataAdminDao;
-
+import com.dto.JaiyaDto;
 import com.dto.UserDataAdminDto;
 import com.google.common.collect.Iterables;
 import com.google.gson.Gson;
@@ -116,6 +116,35 @@ public class UserDataAdmin {
 			message.addProperty("message", true);
 		}catch (Exception e) {
 			message.addProperty("message", false);
+		}
+		
+		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
+	}
+	@POST
+	@Path("/findAllUser")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response findAllUser() {
+		Connect mongo = new Connect();
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		MongoCollection<Document> collection = mongo.db.getCollection("user");
+		ModelMapper Mapper = new ModelMapper();
+		
+		JaiyaDto[] value = null;
+//		 ห้ามใช้     Dao
+		try {
+			FindIterable<Document> data = collection.find();
+			int size = Iterables.size(data);
+			value = new JaiyaDto[size];
+			int key = 0;
+			for (Document document : data) {
+				value[key++] = Mapper.map(document, JaiyaDto.class);
+			}
+			message.addProperty("message", true);
+		}catch (Exception e) {
+			message.addProperty("message", false);
+		}finally {
+			message.add("data", gson.toJsonTree(value));
 		}
 		
 		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();

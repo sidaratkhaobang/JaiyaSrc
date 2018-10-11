@@ -8,10 +8,9 @@ public class JaiyaDto {
 	String email;
 	String password;
 	String confirmpassword;
-	int  idmachine;
+	String  Idmachine;
 	String tel;
-	
-	
+	String status;
 	public String getUsername() {
 		return username;
 	}
@@ -36,19 +35,27 @@ public class JaiyaDto {
 	public void setConfirmpassword(String confirmpassword) {
 		this.confirmpassword = confirmpassword;
 	}
-	
+	public String getIdmachine() {
+		return Idmachine;
+	}
+	public void setIdmachine(String idmachine) {
+		Idmachine = idmachine;
+	}
 	public String getTel() {
 		return tel;
 	}
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public int getIdmachine() {
-		return idmachine;
+	public String getStatus() {
+		return status;
 	}
-	public void setIdmachine(int idmachine) {
-		this.idmachine = idmachine;
+	public void setStatus(String status) {
+		this.status = status;
 	}
+	
+	
+	
 	
 	
 	
