@@ -14,6 +14,7 @@ import org.modelmapper.ModelMapper;
 
 import com.connect.mongo.Connect;
 import com.dto.DistrictDto;
+import com.dto.HospitalAdminDto;
 import com.dto.MachineDto;
 import com.dto.ProvinceDto;
 import com.dto.RegisterDto;
@@ -151,6 +152,35 @@ public class Location {
 			int key = 0;
 			for (Document document : data) {
 				value[key++] = Mapper.map(document, SubdistrictDto.class);
+			}
+			message.addProperty("message", true);
+		}catch (Exception e) {
+			message.addProperty("message", false);
+		}finally {
+			message.add("data", gson.toJsonTree(value));
+		}
+		
+		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
+	}
+	@POST
+	@Path("/findHostpital")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response findAllHospital() {
+		Connect mongo = new Connect();
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		MongoCollection<Document> collection = mongo.db.getCollection("hospital");
+		ModelMapper Mapper = new ModelMapper();
+		
+		HospitalAdminDto[] value = null;
+//		 ห้ามใช้     Dao
+		try {
+			FindIterable<Document> data = collection.find();
+			int size = Iterables.size(data);
+			value = new HospitalAdminDto[size];
+			int key = 0;
+			for (Document document : data) {
+				value[key++] = Mapper.map(document, HospitalAdminDto.class);
 			}
 			message.addProperty("message", true);
 		}catch (Exception e) {

@@ -27,7 +27,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 
 
-@Path("/userdataadmin")
+@Path("/UserDataAdmin")
 public class UserDataAdmin {
 	
 	@POST
@@ -145,6 +145,24 @@ public class UserDataAdmin {
 			message.addProperty("message", false);
 		}finally {
 			message.add("data", gson.toJsonTree(value));
+		}
+		
+		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
+	}
+	@DELETE
+	@Path("/deleteuser")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response delete(JaiyaDto JaiyaDto) {
+		Connect mongo = new Connect();
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		MongoCollection<Document> collection = mongo.db.getCollection("user");
+		
+		try {
+			collection.deleteOne(Filters.eq("_id", JaiyaDto.get_id())); 
+			message.addProperty("message", true);
+		}catch (Exception e) {
+			message.addProperty("message", false);
 		}
 		
 		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();

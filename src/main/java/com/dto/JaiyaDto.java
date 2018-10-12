@@ -3,7 +3,7 @@ package com.dto;
 
 
 public class JaiyaDto {
-	
+	String _id;
 	String username;
 	String email;
 	String password;
@@ -52,6 +52,12 @@ public class JaiyaDto {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public String get_id() {
+		return _id;
+	}
+	public void set_id(String _id) {
+		this._id = _id;
 	}
 	
 	
