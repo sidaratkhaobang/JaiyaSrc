@@ -8,6 +8,8 @@ public class TimetogetpillowDao {
 	String rang;
 	String iduser;
 	String status;
+	String timetoeat;
+	String datetoeat;
 	
 
 	public String getStatus() {
@@ -47,6 +49,18 @@ public class TimetogetpillowDao {
 	}
 	public void setPillow(String pillow) {
 		this.pillow = pillow;
+	}
+	public String getTimetoeat() {
+		return timetoeat;
+	}
+	public void setTimetoeat(String timetoeat) {
+		this.timetoeat = timetoeat;
+	}
+	public String getDatetoeat() {
+		return datetoeat;
+	}
+	public void setDatetoeat(String datetoeat) {
+		this.datetoeat = datetoeat;
 	}
 
 }
