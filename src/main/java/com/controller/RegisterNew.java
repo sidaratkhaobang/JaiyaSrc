@@ -36,6 +36,7 @@ public class RegisterNew {
 		
 		
 		JaiyaDao JaiyaDao = Mapper.map(JaiyaDto, JaiyaDao.class);
+		JaiyaDao.setStatus("1");
 		
 		
 		String json = gson.toJson(JaiyaDao);
