@@ -17,7 +17,6 @@ import com.connect.mongo.Connect;
 
 import com.dao.UserDataAdminDao;
 import com.dto.JaiyaDto;
-import com.dto.RegisterDto;
 import com.dto.UserDataAdminDto;
 import com.google.common.collect.Iterables;
 import com.google.gson.Gson;

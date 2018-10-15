@@ -12,10 +12,7 @@ import org.modelmapper.ModelMapper;
 
 import com.connect.mongo.Connect;
 import com.dao.AlertDao;
-import com.dao.ReisterDao;
 import com.dto.AlertDto;
-import com.dto.RegisterDto;
-import com.dto.UserDataAdminDto;
 import com.google.common.collect.Iterables;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
