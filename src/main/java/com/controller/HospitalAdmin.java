@@ -77,11 +77,11 @@ public class HospitalAdmin {
 		hospitalAdminDao.setLatijude(hospitalAdminDto.getLatijude());
 		hospitalAdminDao.setLongjijude(hospitalAdminDto.getLongjijude());
 		hospitalAdminDao.setNameofhospital(hospitalAdminDto.getNameofhospital());
-		hospitalAdminDao.setProvinceId(hospitalAdminDto.getProvinceId());
-		hospitalAdminDao.setDistrictId(hospitalAdminDto.getDistrictId());
-		hospitalAdminDao.setSubdistrictId(hospitalAdminDto.getSubdistrictId());
-		hospitalAdminDao.setTell(hospitalAdminDto.getTell());
-		
+//		hospitalAdminDao.setProvinceId(hospitalAdminDto.getProvinceId());
+//		hospitalAdminDao.setDistrictId(hospitalAdminDto.getDistrictId());
+//		hospitalAdminDao.setSubdistrictId(hospitalAdminDto.getSubdistrictId());
+//		hospitalAdminDao.setTell(hospitalAdminDto.getTell());
+//		
 		String json = gson.toJson(hospitalAdminDao);
 		Document document = Document.parse(json);
 		
@@ -89,7 +89,7 @@ public class HospitalAdmin {
         setQuery.put("$set", document);
 		
 		BasicDBObject searchQuery = new BasicDBObject();
-		searchQuery.put("_id", hospitalAdminDto.getId());
+		searchQuery.put("_id", hospitalAdminDto.get_id());
 		
 		try {
 			collection.updateOne(searchQuery, setQuery);
@@ -116,7 +116,7 @@ public class HospitalAdmin {
 		Gson gson = new Gson();
 		
 		try {
-			collection.deleteOne(Filters.eq("_id", hospitalAdminDto.getId())); 
+			collection.deleteOne(Filters.eq("_id", hospitalAdminDto.get_id())); 
 			message.addProperty("message", true);
 		}catch (Exception e) {
 			message.addProperty("message", false);

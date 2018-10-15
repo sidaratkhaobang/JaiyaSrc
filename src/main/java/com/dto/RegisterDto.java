@@ -17,8 +17,18 @@ public class RegisterDto {
 	String disease;
 	int status;
 	String iduser;
+	String idmachine;
 	
 	
+	
+	public String getIdmachine() {
+		return idmachine;
+	}
+
+	public void setIdmachine(String idmachine) {
+		this.idmachine = idmachine;
+	}
+
 	public ObjectId getId() {
 		return new ObjectId(_id);
 	}

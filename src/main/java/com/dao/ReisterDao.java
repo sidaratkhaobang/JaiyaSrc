@@ -15,7 +15,18 @@ public class ReisterDao {
 	String disease;
 	int status;
 	String iduser;
+	String idmachine;
 	
+	
+	
+	public String getIdmachine() {
+		return idmachine;
+	}
+
+	public void setIdmachine(String idmachine) {
+		this.idmachine = idmachine;
+	}
+
 	
 	
 	public String getDisease() {
