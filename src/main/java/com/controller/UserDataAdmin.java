@@ -167,5 +167,34 @@ public class UserDataAdmin {
 		
 		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
 	}
+	
+	@POST
+	@Path("/findOne")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response findOne(UserDataAdminDto UserDataAdminDto) {
+		Connect mongo = new Connect();
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		MongoCollection<Document> collection = mongo.db.getCollection("userData");
+		ModelMapper Mapper = new ModelMapper();
+		
+
+		BasicDBObject searchQuery = new BasicDBObject();
+		searchQuery.put("_id", UserDataAdminDto.getId());
+		
+		UserDataAdminDto value = new UserDataAdminDto();
+		
+		try {
+			FindIterable<Document> data = collection.find(searchQuery);
+			value = Mapper.map(data.first(), UserDataAdminDto.class);
+			message.addProperty("message", true);
+		}catch (Exception e) {
+			message.addProperty("message", false);
+		}finally {
+			message.add("data", gson.toJsonTree(value));
+		}
+		
+		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
+	}
 
 }
