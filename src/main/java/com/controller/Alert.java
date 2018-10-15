@@ -15,9 +15,11 @@ import com.dao.AlertDao;
 import com.dao.ReisterDao;
 import com.dto.AlertDto;
 import com.dto.RegisterDto;
-
+import com.dto.UserDataAdminDto;
+import com.google.common.collect.Iterables;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 
@@ -75,6 +77,39 @@ public class Alert {
 			message.addProperty("message", true);
 		}catch (Exception e) {
 			message.addProperty("message", false);
+		}
+		
+		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
+	}
+	
+	
+	@POST
+	@Path("/findAll")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response findAll() {
+		Connect mongo = new Connect();
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		MongoCollection<Document> collection = mongo.db.getCollection("timetogetpillow");
+		
+		ModelMapper Mapper = new ModelMapper();
+		AlertDto[] value = null;
+
+		try {
+			FindIterable<Document> data = collection.find();
+			int size = Iterables.size(data);
+			value = new AlertDto[size];
+			int key = 0;
+			for (Document document : data) {
+				value[key++] = Mapper.map(document, AlertDto.class);
+			}
+			message.addProperty("message", true);
+		}
+		catch (Exception e) {
+			message.addProperty("message", false);
+		}
+		finally {
+			message.add("data", gson.toJsonTree(value));
 		}
 		
 		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
