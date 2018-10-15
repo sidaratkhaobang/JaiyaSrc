@@ -5,11 +5,19 @@ public class TimetogetpillowDao {
 	String time;
 	String date;
 	String pillow;
+	String rang;
 	String iduser;
 	
 	
 	
 	
+	
+	public String getRang() {
+		return rang;
+	}
+	public void setRang(String rang) {
+		this.rang = rang;
+	}
 	public String getIduser() {
 		return iduser;
 	}
