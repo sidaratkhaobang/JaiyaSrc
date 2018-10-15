@@ -13,6 +13,7 @@ import org.modelmapper.ModelMapper;
 import com.connect.mongo.Connect;
 import com.dao.AlertDao;
 import com.dto.AlertDto;
+import com.dto.TimetogetpillowDto;
 import com.google.common.collect.Iterables;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -90,15 +91,15 @@ public class Alert {
 		MongoCollection<Document> collection = mongo.db.getCollection("timetogetpillow");
 		
 		ModelMapper Mapper = new ModelMapper();
-		AlertDto[] value = null;
+		TimetogetpillowDto[] value = null;
 
 		try {
 			FindIterable<Document> data = collection.find();
 			int size = Iterables.size(data);
-			value = new AlertDto[size];
+			value = new TimetogetpillowDto[size];
 			int key = 0;
 			for (Document document : data) {
-				value[key++] = Mapper.map(document, AlertDto.class);
+				value[key++] = Mapper.map(document, TimetogetpillowDto.class);
 			}
 			message.addProperty("message", true);
 		}
