@@ -7,7 +7,15 @@ public class TimetogetpillowDto {
 	String pillow;
 	String rang;
 	String iduser;
+	String status;
 	
+
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	
 	
 	
