@@ -7,17 +7,11 @@ public class TimetogetpillowDao {
 	String pillow;
 	String rang;
 	String iduser;
-	String status;
 	String timetoeat;
 	String datetoeat;
-	
+	String statustoeatpillow;
 
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	
 	public String getRang() {
 		return rang;
 	}
@@ -62,5 +56,13 @@ public class TimetogetpillowDao {
 	public void setDatetoeat(String datetoeat) {
 		this.datetoeat = datetoeat;
 	}
+	public String getStatustoeatpillow() {
+		return statustoeatpillow;
+	}
+	public void setStatustoeatpillow(String statustoeatpillow) {
+		this.statustoeatpillow = statustoeatpillow;
+	}
+	
+
 
 }

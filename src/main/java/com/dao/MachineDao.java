@@ -4,7 +4,6 @@ import org.bson.types.ObjectId;
 
 public class MachineDao {
 	String _id;
-	int userid;
 	String nameofmachine;
 	double latijude;
 	double longjijude;
@@ -18,15 +17,6 @@ public class MachineDao {
 	}
 	public void setId(String _id) {
 		this._id = _id;
-	}
-	public int getUserid() {
-		return userid;
-	}
-	public void setUserid(int userid) {
-		this.userid = userid;
-	}
-	public String getNameofmachine() {
-		return nameofmachine;
 	}
 	public void setNameofmachine(String nameofmachine) {
 		this.nameofmachine = nameofmachine;

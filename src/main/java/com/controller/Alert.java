@@ -85,37 +85,37 @@ public class Alert {
 	}
 	
 	
-//	@POST
-//	@Path("/findAll")
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	public Response findAll() {
-//		Connect mongo = new Connect();
-//		JsonObject message = new JsonObject();
-//		Gson gson = new Gson();
-//		MongoCollection<Document> collection = mongo.db.getCollection("timetogetpillow");
-//		
-//		ModelMapper Mapper = new ModelMapper();
-//		TimetogetpillowDto[] value = null;
-//
-//		try {
-//			FindIterable<Document> data = collection.find();
-//			int size = Iterables.size(data);
-//			value = new TimetogetpillowDto[size];
-//			int key = 0;
-//			for (Document document : data) {
-//				value[key++] = Mapper.map(document, TimetogetpillowDto.class);
-//			}
-//			message.addProperty("message", true);
-//		}
-//		catch (Exception e) {
-//			message.addProperty("message", false);
-//		}
-//		finally {
-//			message.add("data", gson.toJsonTree(value));
-//		}
-//		
-//		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
-//	}
+	@POST
+	@Path("/findAll")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response findAll() {
+		Connect mongo = new Connect();
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		MongoCollection<Document> collection = mongo.db.getCollection("timetogetpillow");
+		
+		ModelMapper Mapper = new ModelMapper();
+		TimetogetpillowDto[] value = null;
+
+		try {
+			FindIterable<Document> data = collection.find();
+			int size = Iterables.size(data);
+			value = new TimetogetpillowDto[size];
+			int key = 0;
+			for (Document document : data) {
+				value[key++] = Mapper.map(document, TimetogetpillowDto.class);
+			}
+			message.addProperty("message", true);
+		}
+		catch (Exception e) {
+			message.addProperty("message", false);
+		}
+		finally {
+			message.add("data", gson.toJsonTree(value));
+		}
+		
+		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
+	}
 	
 	
 	@POST
@@ -132,8 +132,7 @@ public class Alert {
 		BasicDBObject query = new BasicDBObject();
 			
 		List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
-		obj.add(new BasicDBObject("status", TimetogetpillowDto.getStatus()));
-		query.put("$and", obj);
+		obj.add(new BasicDBObject("_id", TimetogetpillowDto.getIduser()));
 				
 		TimetogetpillowDto[] value = null;
 		

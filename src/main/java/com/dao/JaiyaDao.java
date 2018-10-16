@@ -12,6 +12,7 @@ public class JaiyaDao {
 	String  Idmachine;
 	String tel;
 	String status;
+	
 	public String getUsername() {
 		return username;
 	}

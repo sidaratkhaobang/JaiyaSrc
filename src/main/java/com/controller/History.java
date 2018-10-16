@@ -14,8 +14,11 @@ import com.dao.AlertDao;
 import com.dao.HistoryDao;
 import com.dto.AlertDto;
 import com.dto.HistoryDto;
+import com.dto.TimetogetpillowDto;
+import com.google.common.collect.Iterables;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 
 @Path("/history")
@@ -53,5 +56,36 @@ public class History {
 		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
 		
 		
+	}
+	@POST
+	@Path("/findAll")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response findAll() {
+		Connect mongo = new Connect();
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		MongoCollection<Document> collection = mongo.db.getCollection("timetogetpillow");
+		
+		ModelMapper Mapper = new ModelMapper();
+		HistoryDto[] value = null;
+
+		try {
+			FindIterable<Document> data = collection.find();
+			int size = Iterables.size(data);
+			value = new HistoryDto[size];
+			int key = 0;
+			for (Document document : data) {
+				value[key++] = Mapper.map(document, HistoryDto.class);
+			}
+			message.addProperty("message", true);
+		}
+		catch (Exception e) {
+			message.addProperty("message", false);
+		}
+		finally {
+			message.add("data", gson.toJsonTree(value));
+		}
+		
+		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
 	}
 }
