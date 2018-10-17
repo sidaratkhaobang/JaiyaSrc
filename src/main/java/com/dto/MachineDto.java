@@ -46,6 +46,9 @@ public class MachineDto {
 		this.longitude = longitude;
 	}
 	
+	public String getStatus() {
+		return status;
+	}
 	public String getProvinceId() {
 		return provinceId;
 	}
@@ -63,9 +66,6 @@ public class MachineDto {
 	}
 	public void setSubdistrictId(String subdistrictId) {
 		this.subdistrictId = subdistrictId;
-	}
-	public String getStatus() {
-		return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;

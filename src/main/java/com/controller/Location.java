@@ -238,7 +238,7 @@ public class Location {
 //		 ห้ามใช้     Dao
 		try {
 			FindIterable<Document> data = collection.find();
-			FindIterable<Document> data1 = collection.find();
+			FindIterable<Document> data1 = collectiontwo.find();
 			int size = Iterables.size(data);
 			int size1 = Iterables.size(data1);
 
