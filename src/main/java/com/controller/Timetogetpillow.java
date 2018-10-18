@@ -11,6 +11,7 @@ import org.modelmapper.ModelMapper;
 
 import com.connect.mongo.Connect;
 import com.dao.TimetogetpillowDao;
+import com.dto.HistoryDto;
 import com.dto.HospitalAdminDto;
 import com.dto.SubdistrictDto;
 import com.dto.TimetogetpillowDto;
@@ -58,28 +59,62 @@ public class Timetogetpillow {
 		
 		
 	}
+	
 	@POST
-	@Path("/searchTimetogetpillow")
+	@Path("/update")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response search(TimetogetpillowDto TimetogetpillowDto) {
+	public Response update(TimetogetpillowDto TimetogetpillowDto) {
 //		importmongo
 		Connect mongo = new Connect();
-		MongoCollection<Document> collection = mongo.db.getCollection("timetogetpillow");  // db.district
+		MongoCollection<Document> collection = mongo.db.getCollection("timetogetpillow");
 		
 //		import json , modelmapper
 		JsonObject message = new JsonObject();
 		Gson gson = new Gson();
 		ModelMapper Mapper = new ModelMapper();
 		
-		// find when water = 'value' and seed = 'value'
-		BasicDBObject query = new BasicDBObject();// {"provinceId":6}
-		query.put("iduser",TimetogetpillowDto.getIduser()); 
-//		query.TimetogetpillowDto.setStatustoeatpillow("2");
 		
-		TimetogetpillowDto[] value = null;
+		TimetogetpillowDao TimetogetpillowDao = Mapper.map(TimetogetpillowDto, TimetogetpillowDao.class);
+		TimetogetpillowDao.setStatustoeatpillow("2");
 		
+		String json = gson.toJson(TimetogetpillowDao);
+		Document document = Document.parse(json);
+		
+		BasicDBObject setQuery = new BasicDBObject();
+        setQuery.put("$set", document);
+        
+        BasicDBObject searchQuery = new BasicDBObject();
+		searchQuery.put("_id", TimetogetpillowDto.getId());
+		
+//		insert document
 		try {
-			FindIterable<Document> data = collection.find(query); // db.district.find({"provinceId":6})
+			collection.updateOne(searchQuery, setQuery);
+			message.addProperty("message", true);
+			
+		} catch (Exception e) {
+			message.addProperty("message", false);
+		}
+		
+		
+		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
+		
+		
+	}
+	
+	@POST
+	@Path("/findAllTimetogetpillow")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response findAll() {
+		Connect mongo = new Connect();
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		MongoCollection<Document> collection = mongo.db.getCollection("timetogetpillow");
+		
+		ModelMapper Mapper = new ModelMapper();
+		TimetogetpillowDto[] value = null;
+
+		try {
+			FindIterable<Document> data = collection.find();
 			int size = Iterables.size(data);
 			value = new TimetogetpillowDto[size];
 			int key = 0;
@@ -87,13 +122,16 @@ public class Timetogetpillow {
 				value[key++] = Mapper.map(document, TimetogetpillowDto.class);
 			}
 			message.addProperty("message", true);
-		}catch (Exception e) {
+		}
+		catch (Exception e) {
 			message.addProperty("message", false);
-		}finally {
+		}
+		finally {
 			message.add("data", gson.toJsonTree(value));
 		}
 		
 		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
 	}
+
 	
 }
