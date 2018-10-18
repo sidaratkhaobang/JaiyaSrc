@@ -15,7 +15,7 @@ public class RegisterDto {
 	String allergy;
 	String bloodgroup;
 	String disease;
-	int status;
+	String status;
 	String iduser;
 	String idmachine;
 	
@@ -78,17 +78,20 @@ public class RegisterDto {
 	public void setDisease(String disease) {
 		this.disease = disease;
 	}
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
+
 	public String getIduser() {
 		return iduser;
 	}
 	public void setIduser(String iduser) {
 		this.iduser = iduser;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

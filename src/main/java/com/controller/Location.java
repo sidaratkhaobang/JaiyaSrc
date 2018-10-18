@@ -191,5 +191,85 @@ public class Location {
 		
 		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
 	}
+	
+	@POST
+	@Path("/findmachine")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response findmachine() {
+		Connect mongo = new Connect();
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		MongoCollection<Document> collection = mongo.db.getCollection("machine");
+		ModelMapper Mapper = new ModelMapper();
+		
+		MachineDto[] value = null;
+//		 ห้ามใช้     Dao
+		try {
+			FindIterable<Document> data = collection.find();
+			int size = Iterables.size(data);
+			value = new MachineDto[size];
+			int key = 0;
+			for (Document document : data) {
+				value[key++] = Mapper.map(document, MachineDto.class);
+			}
+			message.addProperty("message", true);
+		}catch (Exception e) {
+			message.addProperty("message", false);
+		}finally {
+			message.add("data", gson.toJsonTree(value));
+		}
+		
+		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
+	}
+	
+	@POST
+	@Path("/findmachine1")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response findmachine1() {
+		Connect mongo = new Connect();
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		MongoCollection<Document> collection = mongo.db.getCollection("machine");
+		MongoCollection<Document> collectiontwo = mongo.db.getCollection("province");
+		ModelMapper Mapper = new ModelMapper();
+		
+		MachineDto[] value = null;
+		ProvinceDto[] province = null;
+//		 ห้ามใช้     Dao
+		try {
+			FindIterable<Document> data = collection.find();
+			FindIterable<Document> data1 = collectiontwo.find();
+			int size = Iterables.size(data);
+			int size1 = Iterables.size(data1);
+			
+			value = new MachineDto[size];
+			province = new ProvinceDto[size1];
+			int key = 0;
+			for (Document document : data) {
+				value[key++] = Mapper.map(document, MachineDto.class);
+			}
+			int key1 = 0;
+			for (Document document : data1) {
+				province[key1++] = Mapper.map(document, ProvinceDto.class);
+			}
+			for (int i=0;i<value.length;i++) {
+				for (int j=0;j<province.length;j++) {
+					if(value[i].getProvinceId().equals(province[j].getProvinceId())){
+						value[i].setProvinceId(province[j].getProvinceName());
+					}
+				}
+			}
+			message.addProperty("message", true);
+		}catch (Exception e) {
+			message.addProperty("message", false);
+			System.out.println(e.getMessage());
+		}
+		finally {
+			message.add("data", gson.toJsonTree(value));
+		}
+		
+		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
+	}
+
 
 }

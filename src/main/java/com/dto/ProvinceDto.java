@@ -4,7 +4,7 @@ import org.bson.types.ObjectId;
 
 public class ProvinceDto {
 	String _id;
-	int provinceId;
+	String provinceId;
 	String provinceName;
 	double latitude;
 	double longtitude;
@@ -15,12 +15,15 @@ public class ProvinceDto {
 	public void setId(String _id) {
 		this._id = _id;
 	}
-	public int getProvinceId() {
+	
+	public String getProvinceId() {
 		return provinceId;
 	}
-	public void setProvinceId(int provinceId) {
+
+	public void setProvinceId(String provinceId) {
 		this.provinceId = provinceId;
 	}
+
 	public String getProvinceName() {
 		return provinceName;
 	}

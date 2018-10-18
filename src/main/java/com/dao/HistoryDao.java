@@ -1,25 +1,35 @@
 package com.dao;
 
 public class HistoryDao {
-	int hisorygetpillowId;
-	public int getHisorygetpillowId() {
-		return hisorygetpillowId;
+	String iduser;
+	String statustoeatpillow;
+	String time;
+	String date;
+	
+	public String getIduser() {
+		return iduser;
 	}
-	public void setHisorygetpillowId(int hisorygetpillowId) {
-		this.hisorygetpillowId = hisorygetpillowId;
+	public void setIduser(String iduser) {
+		this.iduser = iduser;
 	}
-	public int getTimetogetpillowId() {
-		return timetogetpillowId;
+	
+	public String getStatustoeatpillow() {
+		return statustoeatpillow;
 	}
-	public void setTimetogetpillowId(int timetogetpillowId) {
-		this.timetogetpillowId = timetogetpillowId;
+	public void setStatustoeatpillow(String statustoeatpillow) {
+		this.statustoeatpillow = statustoeatpillow;
 	}
-	public int getStatus() {
-		return status;
+	public String getTime() {
+		return time;
 	}
-	public void setStatus(int status) {
-		this.status = status;
+	public void setTime(String time) {
+		this.time = time;
 	}
-	int timetogetpillowId;
-	int status;
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
 }
