@@ -16,6 +16,7 @@ import org.modelmapper.ModelMapper;
 import com.connect.mongo.Connect;
 import com.dao.MachineDao;
 import com.dto.MachineDto;
+import com.dto.TimetogetpillowDto;
 import com.google.common.collect.Iterables;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -117,7 +118,7 @@ public class Machine {
 		
 		MachineDao MachineDao = new MachineDao();
 		
-		MachineDao.setUserid(MachineDto.getUserid());
+//		MachineDao.setUserid(MachineDto.getUserid());
 		MachineDao.setNameofmachine(MachineDto.getNameofmachine());
 		MachineDao.setLatijude(MachineDto.getLatijude());
 		MachineDao.setLongjijude(MachineDto.getLongjijude());
@@ -169,6 +170,39 @@ public class Machine {
 		
 		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
 	}
+	
+	@POST
+	@Path("/findAll")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response findAll() {
+		Connect mongo = new Connect();
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		MongoCollection<Document> collection = mongo.db.getCollection("machine");
+		
+		ModelMapper Mapper = new ModelMapper();
+		MachineDto[] value = null;
+
+		try {
+			FindIterable<Document> data = collection.find();
+			int size = Iterables.size(data);
+			value = new MachineDto[size];
+			int key = 0;
+			for (Document document : data) {
+				value[key++] = Mapper.map(document, MachineDto.class);
+			}
+			message.addProperty("message", true);
+		}
+		catch (Exception e) {
+			message.addProperty("message", false);
+		}
+		finally {
+			message.add("data", gson.toJsonTree(value));
+		}
+		
+		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
+	}
+	
 	
 	
 }
