@@ -4,12 +4,46 @@ public class HospitalAdminDto {
 
 	String _id;
 	String nameofhospital;
-	double latijude;
-	double longjijude;
-//	String tell;
-//	int provinceId;
-//	int districtId;
-//	int subdistrictId;
+	double lattiude;
+	double longitude;
+	String tell;
+	String provinceId;
+	String districtId;
+	String subdistrictId;
+
+	public String getTell() {
+		return tell;
+	}
+
+	public void setTell(String tell) {
+		this.tell = tell;
+	}
+
+	
+
+	public String getProvinceId() {
+		return provinceId;
+	}
+
+	public void setProvinceId(String provinceId) {
+		this.provinceId = provinceId;
+	}
+
+	public String getDistrictId() {
+		return districtId;
+	}
+
+	public void setDistrictId(String districtId) {
+		this.districtId = districtId;
+	}
+
+	public String getSubdistrictId() {
+		return subdistrictId;
+	}
+
+	public void setSubdistrictId(String subdistrictId) {
+		this.subdistrictId = subdistrictId;
+	}
 
 	public String get_id() {
 		return _id;
@@ -27,21 +61,22 @@ public class HospitalAdminDto {
 		this.nameofhospital = nameofhospital;
 	}
 
-	public double getLatijude() {
-		return latijude;
+	public double getLattiude() {
+		return lattiude;
 	}
 
-	public void setLatijude(double latijude) {
-		this.latijude = latijude;
+	public void setLattiude(double lattiude) {
+		this.lattiude = lattiude;
 	}
 
-	public double getLongjijude() {
-		return longjijude;
+	public double getLongitude() {
+		return longitude;
 	}
 
-	public void setLongjijude(double longjijude) {
-		this.longjijude = longjijude;
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
+
 	
 	
 

@@ -13,15 +13,21 @@ import org.modelmapper.ModelMapper;
 import com.connect.mongo.Connect;
 import com.dao.HospitalAdminDao;
 import com.dao.JaiyaDao;
+import com.dto.DistrictDto;
+import com.dto.HistoryDto;
 import com.dto.HospitalAdminDto;
 import com.dto.JaiyaDto;
+import com.dto.MachineDto;
+import com.dto.ProvinceDto;
+import com.google.common.collect.Iterables;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.mongodb.BasicDBObject;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 
-@Path("/hospitaladmin")
+@Path("/HospitalAdmin")
 public class HospitalAdmin {
 	
 	
@@ -91,7 +97,7 @@ public class HospitalAdmin {
 		BasicDBObject searchQuery = new BasicDBObject();
 		searchQuery.put("_id", hospitalAdminDto.get_id());
 		
-		try {
+  	try {
 			collection.updateOne(searchQuery, setQuery);
 			message.addProperty("message", true);
 		}catch (Exception e) {
@@ -124,8 +130,66 @@ public class HospitalAdmin {
 		
 		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
 	}
-	
-	
 
 	
-}
+	@POST
+	@Path("/findAll")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response findAll() {
+		Connect mongo = new Connect();
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		MongoCollection<Document> collection = mongo.db.getCollection("hospital");
+		MongoCollection<Document> collection2 = mongo.db.getCollection("province");
+		
+		ModelMapper Mapper = new ModelMapper();
+		
+		HospitalAdminDto[] value = null;
+		ProvinceDto[] province = null;
+		
+//		 ห้ามใช้     Dao
+		try {
+			FindIterable<Document> data = collection.find();
+			FindIterable<Document> data1 = collection2.find();
+			
+			int size = Iterables.size(data);
+			int size1 = Iterables.size(data1);
+			
+			
+			value = new HospitalAdminDto[size];
+			province = new ProvinceDto[size1];
+			
+			
+			int key = 0;
+			for (Document document : data) {
+				value[key++] = Mapper.map(document, HospitalAdminDto.class);
+			}
+			int key1 = 0;
+			for (Document document : data1) {
+				province[key1++] = Mapper.map(document, ProvinceDto.class);
+			}
+			
+			for (int i=0;i<value.length;i++) {
+				for (int j=0;j<province.length;j++) {
+						if(value[i].getProvinceId().equals(province[j].getProvinceId())){
+								value[i].setProvinceId(province[j].getProvinceName());	
+							}
+				}
+							
+			}
+		
+	
+
+	  message.addProperty("message", true);
+      }catch (Exception e) {
+	     message.addProperty("message", false);
+	       System.out.println(e.getMessage());
+         }
+          finally {
+	       message.add("data", gson.toJsonTree(value));
+          }
+        
+           return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
+   }
+		}
+		
