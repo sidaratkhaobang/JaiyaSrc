@@ -1,62 +1,69 @@
 package com.dao;
 
-import org.bson.types.ObjectId;
+
 
 public class MachineDao {
-	String _id;
-	String nameofmachine;
-	double latijude;
-	double longjijude;
-	int provinceId;
-	int districtId;
-	int subdistrictId;
-	int status;
 	
-	public ObjectId getId() {
-		return new ObjectId(_id);
+	String userid;
+	String nameofmachine;
+	double latitude;
+	double longitude;
+	String provinceId;
+	String districtId;
+	String subdistrictId;
+	String status;
+	
+	
+	public String getUserid() {
+		return userid;
 	}
-	public void setId(String _id) {
-		this._id = _id;
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public String getNameofmachine() {
+		return nameofmachine;
 	}
 	public void setNameofmachine(String nameofmachine) {
 		this.nameofmachine = nameofmachine;
 	}
-	public double getLatijude() {
-		return latijude;
+	public double getLatitude() {
+		return latitude;
 	}
-	public void setLatijude(double latijude) {
-		this.latijude = latijude;
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
 	}
-	public double getLongjijude() {
-		return longjijude;
+	public double getLongitude() {
+		return longitude;
 	}
-	public void setLongjijude(double longjijude) {
-		this.longjijude = longjijude;
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
-	public int getProvinceId() {
+	public String getProvinceId() {
 		return provinceId;
 	}
-	public void setProvinceId(int provinceId) {
+	public void setProvinceId(String provinceId) {
 		this.provinceId = provinceId;
 	}
-	public int getDistrictId() {
+	public String getDistrictId() {
 		return districtId;
 	}
-	public void setDistrictId(int districtId) {
+	public void setDistrictId(String districtId) {
 		this.districtId = districtId;
 	}
-	public int getSubdistrictId() {
+	public String getSubdistrictId() {
 		return subdistrictId;
 	}
-	public void setSubdistrictId(int subdistrictId) {
+	public void setSubdistrictId(String subdistrictId) {
 		this.subdistrictId = subdistrictId;
 	}
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	
 	
 	
 }

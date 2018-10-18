@@ -120,8 +120,8 @@ public class Machine {
 		
 //		MachineDao.setUserid(MachineDto.getUserid());
 		MachineDao.setNameofmachine(MachineDto.getNameofmachine());
-		MachineDao.setLatijude(MachineDto.getLatijude());
-		MachineDao.setLongjijude(MachineDto.getLongjijude());
+		MachineDao.setLatitude(MachineDto.getLatitude());
+		MachineDao.setLongitude(MachineDto.getLatitude());
 		MachineDao.setProvinceId(MachineDto.getProvinceId());
 		MachineDao.setDistrictId(MachineDto.getDistrictId());
 		MachineDao.setSubdistrictId(MachineDto.getSubdistrictId());

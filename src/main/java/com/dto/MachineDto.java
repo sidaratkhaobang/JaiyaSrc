@@ -13,6 +13,8 @@ public class MachineDto {
 	String subdistrictId;
 	String status;
 	
+
+	
 //	public ObjectId getId() {
 //		return new ObjectId(_id);
 //	}
