@@ -40,7 +40,7 @@ public class Timetogetpillow {
 		
 		
 		TimetogetpillowDao TimetogetpillowDao = Mapper.map(TimetogetpillowDto, TimetogetpillowDao.class);
-		TimetogetpillowDao.setStatustoeatpillow("2");
+		TimetogetpillowDao.setStatustoeatpillow("1");
 		
 		String json = gson.toJson(TimetogetpillowDao);
 		Document document = Document.parse(json);
