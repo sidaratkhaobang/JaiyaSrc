@@ -13,12 +13,14 @@ public class MachineDto {
 	String subdistrictId;
 	String status;
 	
-//	public ObjectId getId() {
-//		return new ObjectId(_id);
-//	}
-//	public void setId(String _id) {
-//		this._id = _id;
-//	}
+
+	
+	public ObjectId getId() {
+		return new ObjectId(_id);
+	}
+	public void setId(String _id) {
+		this._id = _id;
+	}
 	public String getUserid() {
 		return userid;
 	}
