@@ -241,16 +241,16 @@ public class Location {
 			FindIterable<Document> data1 = collectiontwo.find();
 			int size = Iterables.size(data);
 			int size1 = Iterables.size(data1);
-
+			
 			value = new MachineDto[size];
 			province = new ProvinceDto[size1];
 			int key = 0;
 			for (Document document : data) {
 				value[key++] = Mapper.map(document, MachineDto.class);
 			}
-			key = 0;
+			int key1 = 0;
 			for (Document document : data1) {
-				province[key++] = Mapper.map(document, ProvinceDto.class);
+				province[key1++] = Mapper.map(document, ProvinceDto.class);
 			}
 			for (int i=0;i<value.length;i++) {
 				for (int j=0;j<province.length;j++) {
@@ -262,7 +262,9 @@ public class Location {
 			message.addProperty("message", true);
 		}catch (Exception e) {
 			message.addProperty("message", false);
-		}finally {
+			System.out.println(e.getMessage());
+		}
+		finally {
 			message.add("data", gson.toJsonTree(value));
 		}
 		
