@@ -68,16 +68,14 @@ public class Timetogetpillow {
 		Connect mongo = new Connect();
 		MongoCollection<Document> collection = mongo.db.getCollection("timetogetpillow");
 		
-//		import json , modelmapper
+//		import json
 		JsonObject message = new JsonObject();
 		Gson gson = new Gson();
-		ModelMapper Mapper = new ModelMapper();
 		
+		TimetogetpillowDao timetogetpillow = new TimetogetpillowDao();
+		timetogetpillow.setStatustoeatpillow("2");
 		
-		TimetogetpillowDao TimetogetpillowDao = Mapper.map(TimetogetpillowDto, TimetogetpillowDao.class);
-		TimetogetpillowDao.setStatustoeatpillow("2");
-		
-		String json = gson.toJson(TimetogetpillowDao);
+		String json = gson.toJson(timetogetpillow);
 		Document document = Document.parse(json);
 		
 		BasicDBObject setQuery = new BasicDBObject();
