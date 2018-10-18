@@ -15,12 +15,12 @@ public class MachineDto {
 	
 
 	
-	public ObjectId getId() {
-		return new ObjectId(_id);
-	}
-	public void setId(String _id) {
-		this._id = _id;
-	}
+//	public ObjectId getId() {
+//		return new ObjectId(_id);
+//	}
+//	public void setId(String _id) {
+//		this._id = _id;
+//	}
 	public String getUserid() {
 		return userid;
 	}

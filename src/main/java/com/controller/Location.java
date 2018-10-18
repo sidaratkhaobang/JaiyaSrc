@@ -266,10 +266,11 @@ public class Location {
 				for (int j=0;j<province.length;j++) {
 					for(int k=0;k<district.length;k++) {
 						if(value[i].getProvinceId().equals(province[j].getProvinceId())){
-							if(value[i].getDistrictId().equals(district[k].getDistricId())) {
-								value[i].setProvinceId(province[j].getProvinceName());
-								value[i].setDistrictId(district[k].getDistrictName());
-							}
+							value[i].setProvinceId(province[j].getProvinceName());
+//							if(value[i].getDistrictId().equals(district[k].getDistricId())) {
+//								value[i].setProvinceId(province[j].getProvinceName());
+//								value[i].setDistrictId(district[k].getDistrictName());
+//							}
 							
 						}
 					}
