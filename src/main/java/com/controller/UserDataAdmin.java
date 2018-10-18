@@ -14,8 +14,9 @@ import org.bson.Document;
 import org.modelmapper.ModelMapper;
 
 import com.connect.mongo.Connect;
-
+import com.dao.HistoryDao;
 import com.dao.UserDataAdminDao;
+import com.dto.HistoryDto;
 import com.dto.JaiyaDto;
 import com.dto.RegisterDto;
 import com.dto.UserDataAdminDto;
@@ -30,6 +31,41 @@ import com.mongodb.client.model.Filters;
 
 @Path("/UserDataAdmin")
 public class UserDataAdmin {
+	
+	@POST
+	@Path("/insert")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response insert(UserDataAdminDto UserDataAdminDto) {
+//		importmongo
+		Connect mongo = new Connect();
+		MongoCollection<Document> collection = mongo.db.getCollection("userData");
+		
+//		import json , modelmapper
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		ModelMapper Mapper = new ModelMapper();
+		
+		
+		UserDataAdminDao UserDataAdminDao = Mapper.map(UserDataAdminDto, UserDataAdminDao.class);
+		
+		
+		String json = gson.toJson(UserDataAdminDao);
+		Document document = Document.parse(json);
+		
+//		insert document
+		try {
+			collection.insertOne(document);
+			message.addProperty("message", true);
+			
+		} catch (Exception e) {
+			message.addProperty("message", false);
+		}
+		
+		
+		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
+		
+		
+	}
 	
 	@POST
 	@Path("/findAll")
