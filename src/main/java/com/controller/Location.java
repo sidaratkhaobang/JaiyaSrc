@@ -231,7 +231,7 @@ public class Location {
 		Gson gson = new Gson();
 		MongoCollection<Document> collection = mongo.db.getCollection("machine");
 		MongoCollection<Document> collectiontwo = mongo.db.getCollection("province");
-		MongoCollection<Document> collectionthree = mongo.db.getCollection("district");
+//		MongoCollection<Document> collectionthree = mongo.db.getCollection("district");
 		ModelMapper Mapper = new ModelMapper();
 		
 		MachineDto[] value = null;
@@ -241,14 +241,14 @@ public class Location {
 		try {
 			FindIterable<Document> data = collection.find();
 			FindIterable<Document> data1 = collectiontwo.find();
-			FindIterable<Document> data2 = collectionthree.find();
+//			FindIterable<Document> data2 = collectiontwo.find();
 			int size = Iterables.size(data);
 			int size1 = Iterables.size(data1);
-			int size2 = Iterables.size(data2);
+//			int size2 = Iterables.size(data2);
 			
 			value = new MachineDto[size];
 			province = new ProvinceDto[size1];
-			district = new DistrictDto[size2];
+//			district = new DistrictDto[size2];
 			
 			int key = 0;
 			for (Document document : data) {
@@ -258,24 +258,16 @@ public class Location {
 			for (Document document : data1) {
 				province[key1++] = Mapper.map(document, ProvinceDto.class);
 			}
-			key= 0 ;
-			for (Document document : data2) {
-				district[key++] = Mapper.map(document, DistrictDto.class);
-			}
+			
 			for (int i=0;i<value.length;i++) {
 				for (int j=0;j<province.length;j++) {
-					for(int k=0;k<district.length;k++) {
 						if(value[i].getProvinceId().equals(province[j].getProvinceId())){
-							value[i].setProvinceId(province[j].getProvinceName());
-//							if(value[i].getDistrictId().equals(district[k].getDistricId())) {
-//								value[i].setProvinceId(province[j].getProvinceName());
-//								value[i].setDistrictId(district[k].getDistrictName());
-//							}
+								value[i].setProvinceId(province[j].getProvinceName());
+							}
 							
 						}
-					}
 				}
-			}
+			
 			message.addProperty("message", true);
 		}catch (Exception e) {
 			message.addProperty("message", false);
