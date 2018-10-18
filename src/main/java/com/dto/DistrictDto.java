@@ -5,31 +5,27 @@ import org.bson.types.ObjectId;
 public class DistrictDto {
 	
 	String districtName;
-	int provinceId;
-	int districId;
-	
+	String provinceId;
+	String districId;
 	public String getDistrictName() {
 		return districtName;
 	}
-
 	public void setDistrictName(String districtName) {
 		this.districtName = districtName;
 	}
-
-	public int getProvinceId() {
+	public String getProvinceId() {
 		return provinceId;
 	}
-
-	public void setProvinceId(int provinceId) {
+	public void setProvinceId(String provinceId) {
 		this.provinceId = provinceId;
 	}
-
-	public int getDistricId() {
+	public String getDistricId() {
 		return districId;
 	}
-
-	public void setDistricId(int districId) {
+	public void setDistricId(String districId) {
 		this.districId = districId;
 	}
+	
+	
 
 }

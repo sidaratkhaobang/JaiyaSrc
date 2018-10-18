@@ -231,19 +231,25 @@ public class Location {
 		Gson gson = new Gson();
 		MongoCollection<Document> collection = mongo.db.getCollection("machine");
 		MongoCollection<Document> collectiontwo = mongo.db.getCollection("province");
+		MongoCollection<Document> collectionthree = mongo.db.getCollection("district");
 		ModelMapper Mapper = new ModelMapper();
 		
 		MachineDto[] value = null;
 		ProvinceDto[] province = null;
+		DistrictDto[] district = null;
 //		 ห้ามใช้     Dao
 		try {
 			FindIterable<Document> data = collection.find();
 			FindIterable<Document> data1 = collectiontwo.find();
+			FindIterable<Document> data2 = collectionthree.find();
 			int size = Iterables.size(data);
 			int size1 = Iterables.size(data1);
+			int size2 = Iterables.size(data2);
 			
 			value = new MachineDto[size];
 			province = new ProvinceDto[size1];
+			district = new DistrictDto[size2];
+			
 			int key = 0;
 			for (Document document : data) {
 				value[key++] = Mapper.map(document, MachineDto.class);
@@ -252,10 +258,20 @@ public class Location {
 			for (Document document : data1) {
 				province[key1++] = Mapper.map(document, ProvinceDto.class);
 			}
+			key= 0 ;
+			for (Document document : data2) {
+				district[key++] = Mapper.map(document, DistrictDto.class);
+			}
 			for (int i=0;i<value.length;i++) {
 				for (int j=0;j<province.length;j++) {
-					if(value[i].getProvinceId().equals(province[j].getProvinceId())){
-						value[i].setProvinceId(province[j].getProvinceName());
+					for(int k=0;k<district.length;k++) {
+						if(value[i].getProvinceId().equals(province[j].getProvinceId())){
+							if(value[i].getDistrictId().equals(district[k].getDistricId())) {
+								value[i].setProvinceId(province[j].getProvinceName());
+								value[i].setDistrictId(district[k].getDistrictName());
+							}
+							
+						}
 					}
 				}
 			}
