@@ -122,7 +122,7 @@ public class HospitalAdmin {
 		Gson gson = new Gson();
 		
 		try {
-			collection.deleteOne(Filters.eq("_id", hospitalAdminDto.get_id())); 
+			collection.deleteOne(Filters.eq("_id", hospitalAdminDto.getId())); 
 			message.addProperty("message", true);
 		}catch (Exception e) {
 			message.addProperty("message", false);

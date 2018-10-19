@@ -5,6 +5,15 @@ import org.bson.types.ObjectId;
 public class HospitalAdminDto {
 
 	String id;
+	String _id;
+	public String get_id() {
+		return _id;
+	}
+
+	public void set_id(String _id) {
+		this._id = _id;
+	}
+
 	String nameofhospital;
 	double lattiude;
 	double longitude;
