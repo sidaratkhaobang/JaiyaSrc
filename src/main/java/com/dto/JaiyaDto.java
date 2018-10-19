@@ -1,8 +1,9 @@
 package com.dto;
 
-
+import org.bson.types.ObjectId;
 
 public class JaiyaDto {
+	String id;
 	String _id;
 	String username;
 	String email;
@@ -11,6 +12,12 @@ public class JaiyaDto {
 	String  Idmachine;
 	String tel;
 	String status;
+	public ObjectId getId() {
+		return new ObjectId(id);
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getUsername() {
 		return username;
 	}

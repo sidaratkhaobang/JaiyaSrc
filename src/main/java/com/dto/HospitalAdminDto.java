@@ -15,7 +15,7 @@ public class HospitalAdminDto {
 	}
 
 	String nameofhospital;
-	double lattiude;
+	double latitude;
 	double longitude;
 	String tell;
 	String provinceId;
@@ -71,12 +71,14 @@ public class HospitalAdminDto {
 		this.nameofhospital = nameofhospital;
 	}
 
-	public double getLattiude() {
-		return lattiude;
+	
+
+	public double getLatitude() {
+		return latitude;
 	}
 
-	public void setLattiude(double lattiude) {
-		this.lattiude = lattiude;
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
 	}
 
 	public double getLongitude() {

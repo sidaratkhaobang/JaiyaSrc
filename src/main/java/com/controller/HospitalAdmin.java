@@ -80,7 +80,7 @@ public class HospitalAdmin {
 		
 		HospitalAdminDao hospitalAdminDao = new HospitalAdminDao();
 		
-		hospitalAdminDao.setLattiude(hospitalAdminDto.getLattiude());
+		hospitalAdminDao.setLatitude(hospitalAdminDto.getLatitude());
 		hospitalAdminDao.setLongitude(hospitalAdminDto.getLongitude());
 		hospitalAdminDao.setNameofhospital(hospitalAdminDto.getNameofhospital());
 		hospitalAdminDao.setProvinceId(hospitalAdminDto.getProvinceId());
@@ -172,11 +172,11 @@ public class HospitalAdmin {
 			for (int i=0;i<value.length;i++) {
 				for (int j=0;j<province.length;j++) {
 						if(value[i].getProvinceId().equals(province[j].getProvinceId())){
-								value[i].setProvinceId(province[j].getProvinceName());	
+								value[i].setProvinceId(province[j].getProvinceName());
 							}
-				}
 							
-			}
+						}
+				}
 		
 	
 
