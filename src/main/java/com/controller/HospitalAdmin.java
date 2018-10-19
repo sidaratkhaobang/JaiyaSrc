@@ -80,13 +80,13 @@ public class HospitalAdmin {
 		
 		HospitalAdminDao hospitalAdminDao = new HospitalAdminDao();
 		
-		hospitalAdminDao.setLatijude(hospitalAdminDto.getLatijude());
-		hospitalAdminDao.setLongjijude(hospitalAdminDto.getLongjijude());
+		hospitalAdminDao.setLattiude(hospitalAdminDto.getLattiude());
+		hospitalAdminDao.setLongitude(hospitalAdminDto.getLongitude());
 		hospitalAdminDao.setNameofhospital(hospitalAdminDto.getNameofhospital());
-//		hospitalAdminDao.setProvinceId(hospitalAdminDto.getProvinceId());
+		hospitalAdminDao.setProvinceId(hospitalAdminDto.getProvinceId());
 //		hospitalAdminDao.setDistrictId(hospitalAdminDto.getDistrictId());
 //		hospitalAdminDao.setSubdistrictId(hospitalAdminDto.getSubdistrictId());
-//		hospitalAdminDao.setTell(hospitalAdminDto.getTell());
+		hospitalAdminDao.setTell(hospitalAdminDto.getTell());
 //		
 		String json = gson.toJson(hospitalAdminDao);
 		Document document = Document.parse(json);
@@ -95,7 +95,7 @@ public class HospitalAdmin {
         setQuery.put("$set", document);
 		
 		BasicDBObject searchQuery = new BasicDBObject();
-		searchQuery.put("_id", hospitalAdminDto.get_id());
+		searchQuery.put("_id", hospitalAdminDto.getId());
 		
   	try {
 			collection.updateOne(searchQuery, setQuery);

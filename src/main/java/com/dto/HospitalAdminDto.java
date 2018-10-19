@@ -1,8 +1,10 @@
 package com.dto;
 
+import org.bson.types.ObjectId;
+
 public class HospitalAdminDto {
 
-	String _id;
+	String id;
 	String nameofhospital;
 	double lattiude;
 	double longitude;
@@ -19,7 +21,12 @@ public class HospitalAdminDto {
 		this.tell = tell;
 	}
 
-	
+	public ObjectId getId() {
+		return new ObjectId(id);
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getProvinceId() {
 		return provinceId;
@@ -45,13 +52,7 @@ public class HospitalAdminDto {
 		this.subdistrictId = subdistrictId;
 	}
 
-	public String get_id() {
-		return _id;
-	}
-
-	public void set_id(String _id) {
-		this._id = _id;
-	}
+	
 
 	public String getNameofhospital() {
 		return nameofhospital;
