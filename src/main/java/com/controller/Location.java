@@ -279,6 +279,44 @@ public class Location {
 		
 		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
 	}
+	
+	
+	@POST
+	@Path("/searchHospital")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response searchHospital(HospitalAdminDto HospitalAdminDto) {
+//		importmongo
+		Connect mongo = new Connect();
+		MongoCollection<Document> collection = mongo.db.getCollection("hospital");  // db.district
+		
+//		import json , modelmapper
+		JsonObject message = new JsonObject();
+		Gson gson = new Gson();
+		ModelMapper Mapper = new ModelMapper();
+		
+		// find when water = 'value' and seed = 'value'
+		BasicDBObject query = new BasicDBObject();
+		query.put("nameofhospital", HospitalAdminDto.getProvinceId()); // {"provinceId":6}
+				
+		HospitalAdminDto[] value = null;
+		
+		try {
+			FindIterable<Document> data = collection.find(query); // db.district.find({"provinceId":6})
+			int size = Iterables.size(data);
+			value = new HospitalAdminDto[size];
+			int key = 0;
+			for (Document document : data) {
+				value[key++] = Mapper.map(document, HospitalAdminDto.class);
+			}
+			message.addProperty("message", true);
+		}catch (Exception e) {
+			message.addProperty("message", false);
+		}finally {
+			message.add("data", gson.toJsonTree(value));
+		}
+		
+		return Response.ok(gson.toJson(message), MediaType.APPLICATION_JSON).build();
+	}
 
 
 }
