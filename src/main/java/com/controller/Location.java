@@ -287,7 +287,7 @@ public class Location {
 	public Response searchHospital(HospitalAdminDto HospitalAdminDto) {
 //		importmongo
 		Connect mongo = new Connect();
-		MongoCollection<Document> collection = mongo.db.getCollection("hospital");  // db.district
+		MongoCollection<Document> collection = mongo.db.getCollection("hospital");  
 		
 //		import json , modelmapper
 		JsonObject message = new JsonObject();
@@ -296,12 +296,12 @@ public class Location {
 		
 		// find when water = 'value' and seed = 'value'
 		BasicDBObject query = new BasicDBObject();
-		query.put("nameofhospital", HospitalAdminDto.getProvinceId()); // {"provinceId":6}
+		query.put("nameofhospital", HospitalAdminDto.getNameofhospital()); 
 				
 		HospitalAdminDto[] value = null;
 		
 		try {
-			FindIterable<Document> data = collection.find(query); // db.district.find({"provinceId":6})
+			FindIterable<Document> data = collection.find(query); 
 			int size = Iterables.size(data);
 			value = new HospitalAdminDto[size];
 			int key = 0;
